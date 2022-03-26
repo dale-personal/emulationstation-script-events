@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # name of the file that stores the last marquee selected
-PREVIOUSGAMESELECTEDFILE="/home/dale/pixelcade/.game-select"
+PREVIOUSGAMESELECTEDFILE="/opt/retropie/configs/all/emulationstation/.game-select"
 
 PREVIOUSGAMESELECTED="$1"
 
