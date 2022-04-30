@@ -2,7 +2,7 @@
 
 ROMNAME=$(basename "$2")
 
-URLENCODED_FILENAME="$(python -c "import urllib, sys; print urllib.quote(sys.argv[1].lower())" "${ROMNAME%.*}")"
+URLENCODED_FILENAME="$(python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1].lower()))" "${ROMNAME%.*}")"
 
 PIXELCADEBASEURL="http://localhost:8080/"
 PIXELCADEURL="arcade/stream/$1/$URLENCODED_FILENAME"
@@ -13,7 +13,7 @@ PREVIOUSGAMESELECTEDFILE="$HOME/pixelcade/.game-select"
 # get the last previously selected game for the marquee
 PREVIOUSGAMESELECTED=$(cat "$PREVIOUSGAMESELECTEDFILE" 2>/dev/null)
 
-LOWER_FILENAME="$(python -c "import urllib, sys; print sys.argv[1].lower()" "${ROMNAME%.*}")"
+LOWER_FILENAME="$(python3 -c "import sys; print(sys.argv[1].lower())" "${ROMNAME%.*}")"
 
 if [ ! -d "$HOME/pixelcade/$1" ] || [ -f "$HOME/pixelcade/$1/$LOWER_FILENAME.png" ] || [ -f "$HOME/pixelcade/$1/$LOWER_FILENAME.gif" ]; then
   CURRENTGAMESELECTED="$1/$ROMNAME"
